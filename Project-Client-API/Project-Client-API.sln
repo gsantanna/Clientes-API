@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project-Presentation", "Project-Presentation\Project-Presentation.csproj", "{7F2F7199-E264-438F-B379-FF0F5A19834D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{A79316C6-5372-4090-99C9-88CC2101C4E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F2F7199-E264-438F-B379-FF0F5A19834D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2F7199-E264-438F-B379-FF0F5A19834D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2F7199-E264-438F-B379-FF0F5A19834D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2F7199-E264-438F-B379-FF0F5A19834D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F2F7199-E264-438F-B379-FF0F5A19834D} = {A79316C6-5372-4090-99C9-88CC2101C4E5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48450639-E7FD-4488-9E2D-4235797ED3B3}
+	EndGlobalSection
+EndGlobal
