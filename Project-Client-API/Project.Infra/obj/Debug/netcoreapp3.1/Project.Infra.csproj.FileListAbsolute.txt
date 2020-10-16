@@ -7,3 +7,6 @@ C:\git\ClientesAPI\Project-Client-API\Project.Infra\obj\Debug\netcoreapp3.1\Proj
 C:\git\ClientesAPI\Project-Client-API\Project.Infra\obj\Debug\netcoreapp3.1\Project.Infra.csproj.CoreCompileInputs.cache
 C:\git\ClientesAPI\Project-Client-API\Project.Infra\obj\Debug\netcoreapp3.1\Project.Infra.dll
 C:\git\ClientesAPI\Project-Client-API\Project.Infra\obj\Debug\netcoreapp3.1\Project.Infra.pdb
+C:\git\ClientesAPI\Project-Client-API\Project.Infra\bin\Debug\netcoreapp3.1\Project.Domain.dll
+C:\git\ClientesAPI\Project-Client-API\Project.Infra\bin\Debug\netcoreapp3.1\Project.Domain.pdb
+C:\git\ClientesAPI\Project-Client-API\Project.Infra\obj\Debug\netcoreapp3.1\Project.Infra.csproj.CopyComplete
