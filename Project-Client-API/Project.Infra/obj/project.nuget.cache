@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "15xE81BCKKJ0fuhbTM/kBWxDs+PHVuC1XSUJ4pFoF0L4C+uy3dKRthGPrBtoCO+7FFNFvWSqn/usZHtj5Q7skQ==",
+  "dgSpecHash": "ezNWqGvY6un4ctcKX8Engjc7e37uC61BJsrGslw6gI7qQLpdh5z7r6z3y0Jw5ma1fLVkzKiTZfH+WsAt/4u7Fg==",
   "success": true,
   "projectFilePath": "C:\\git\\ClientesAPI\\Project-Client-API\\Project.Infra\\Project.Infra.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\gustavo\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.4\\microsoft.extensions.configuration.3.1.4.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.4\\microsoft.extensions.configuration.abstractions.3.1.4.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\3.1.4\\microsoft.extensions.configuration.fileextensions.3.1.4.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.extensions.configuration.json\\3.1.4\\microsoft.extensions.configuration.json.3.1.4.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.4\\microsoft.extensions.fileproviders.abstractions.3.1.4.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\3.1.4\\microsoft.extensions.fileproviders.physical.3.1.4.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\3.1.4\\microsoft.extensions.filesystemglobbing.3.1.4.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.4\\microsoft.extensions.primitives.3.1.4.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\system.componentmodel.annotations\\4.4.1\\system.componentmodel.annotations.4.4.1.nupkg.sha512"
+  ],
   "logs": []
 }

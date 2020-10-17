@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "8vQikl6sBfVtkfgT5jRUmBNTEaKCgM2Lky+RKMp6Yg+3w1Nl88z2HSgiAvyUHXR0h2LwZSSg1AcXTFxQxBRgWQ==",
+  "dgSpecHash": "d9nQTwcBaGo3yPKpXhZTXumAeC28dVfMz+vAv4wezKS5vtrBK7rcAvWQ5wvQ8sG9BygBSPdWB2H71FFQUI3nPw==",
   "success": true,
   "projectFilePath": "C:\\git\\ClientesAPI\\Project-Client-API\\Project.Domain\\Project.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\gustavo\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\system.componentmodel.annotations\\4.4.1\\system.componentmodel.annotations.4.4.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -3,6 +3,7 @@ C:\git\ClientesAPI\Project-Client-API\Project.Domain\bin\Debug\netcoreapp3.1\Pro
 C:\git\ClientesAPI\Project-Client-API\Project.Domain\bin\Debug\netcoreapp3.1\Project.Domain.pdb
 C:\git\ClientesAPI\Project-Client-API\Project.Domain\obj\Debug\netcoreapp3.1\Project.Domain.AssemblyInfoInputs.cache
 C:\git\ClientesAPI\Project-Client-API\Project.Domain\obj\Debug\netcoreapp3.1\Project.Domain.AssemblyInfo.cs
-C:\git\ClientesAPI\Project-Client-API\Project.Domain\obj\Debug\netcoreapp3.1\Project.Domain.csproj.CoreCompileInputs.cache
 C:\git\ClientesAPI\Project-Client-API\Project.Domain\obj\Debug\netcoreapp3.1\Project.Domain.dll
 C:\git\ClientesAPI\Project-Client-API\Project.Domain\obj\Debug\netcoreapp3.1\Project.Domain.pdb
+C:\git\ClientesAPI\Project-Client-API\Project.Domain\obj\Debug\netcoreapp3.1\Project.Domain.csprojAssemblyReference.cache
+C:\git\ClientesAPI\Project-Client-API\Project.Domain\obj\Debug\netcoreapp3.1\Project.Domain.csproj.CoreCompileInputs.cache
