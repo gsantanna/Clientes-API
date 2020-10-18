@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Project.Domain.Entities
+﻿namespace Project.Domain.Entities
 {
     public class Endereco
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public string Logradouro { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
@@ -17,7 +13,7 @@ namespace Project.Domain.Entities
 
         }
 
-        public Endereco(Guid id, string logradouro, string bairro, string cidade, string estado)
+        public Endereco(long id, string logradouro, string bairro, string cidade, string estado)
         {
             Id = id;
             Logradouro = logradouro;

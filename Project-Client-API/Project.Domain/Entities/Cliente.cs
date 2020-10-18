@@ -4,18 +4,15 @@ namespace Project.Domain.Entities
 {
     public class Cliente
     {
-        public Guid Id { get; set; }
-        public string Nome { get; set; }
-        public string Cpf { get; set; }
-        public int Idade { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public long Id { get; protected set; }
+        public string Nome { get; protected set; }
+        public string Cpf { get; protected set; }
+        public int Idade { get; protected set; }
+        public DateTime DataNascimento { get; protected set; }
 
-        public Cliente()
-        {
+        public Cliente() { }
 
-        }
-
-        public Cliente(Guid id, string nome, string cpf, int idade, DateTime dataNascimento)
+        public Cliente(long id, string nome, string cpf, int idade, DateTime dataNascimento)
         {
             Id = id;
             Nome = nome;

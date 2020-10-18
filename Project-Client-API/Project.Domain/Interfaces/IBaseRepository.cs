@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace Project.Domain.Interfaces
 {
@@ -8,7 +7,7 @@ namespace Project.Domain.Interfaces
         void Add(TEntity obj);
         void Update(TEntity obj);
         void Remove(TEntity obj);
-        IQueryable<TEntity> GetAll();
-        TEntity GetById(Guid id);
+        IEnumerable<TEntity> GetAll();
+        TEntity Get(long id);
     }
 }
