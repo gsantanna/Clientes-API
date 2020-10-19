@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project.Application.Commands.Cliente;
 using Project.Application.Interfaces;
-using Project.Domain.Entities;
-using Project.Domain.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Project_Presentation.Controllers
 {

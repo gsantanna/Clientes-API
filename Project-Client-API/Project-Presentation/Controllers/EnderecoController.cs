@@ -11,12 +11,10 @@ namespace Project_Presentation.Controllers
     public class EnderecoController : ControllerBase
     {
         private readonly IEnderecoApplicationService enderecoApplicationService;
-        private readonly IEnderecoRepository enderecoRepository;
 
-        public EnderecoController(IEnderecoApplicationService enderecoApplicationService, IEnderecoRepository enderecoRepository)
+        public EnderecoController(IEnderecoApplicationService enderecoApplicationService)
         {
             this.enderecoApplicationService = enderecoApplicationService;
-            this.enderecoRepository = enderecoRepository;
         }
 
         [HttpPost]
@@ -72,13 +70,33 @@ namespace Project_Presentation.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok();
+            try
+            {
+                var result = enderecoApplicationService.GetAll();
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(long id)
         {
-            return Ok();
+            try
+            {
+                var result = enderecoApplicationService.GetById(id);
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }

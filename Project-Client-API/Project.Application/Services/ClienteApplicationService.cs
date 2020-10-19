@@ -2,7 +2,6 @@
 using Project.Application.Interfaces;
 using Project.Domain.Entities;
 using Project.Domain.Interfaces;
-using Project.Domain.Interfaces.Services;
 using Project.Domain.Validations;
 using System;
 using System.Collections.Generic;

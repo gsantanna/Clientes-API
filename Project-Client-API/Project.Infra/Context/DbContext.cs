@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -14,7 +13,6 @@ namespace Project.Infra.Context
         public DbContext(IConfiguration configuration)
         {
             _configuration = configuration;
-            //_connectionString = _configuration.GetConnectionString("strConnection");
             _connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ClientesDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
 

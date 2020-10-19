@@ -41,6 +41,7 @@ namespace Project.Infra.Repositories
 
             SqlCommand.CommandType = CommandType.Text;
             SqlCommand.CommandText = queryGetAll;
+            SqlConnection.Close();
             SqlConnection.Open();
 
             SqlDataReader = SqlCommand.ExecuteReader();
@@ -58,7 +59,6 @@ namespace Project.Infra.Repositories
                         ));
                 }
             }
-
             SqlDataReader.Close();
 
             return enderecos;
@@ -106,11 +106,11 @@ namespace Project.Infra.Repositories
 
         public override void MapRemoveCommandParameters(Endereco entity)
         {
-            string queryDelete = "delete from Endereco where id = @enderecoId";
+            string queryDelete = "delete from Endereco where id = @Id";
 
             SqlCommand.CommandType = CommandType.Text;
             SqlCommand.CommandText = queryDelete;
-            SqlCommand.Parameters.AddWithValue("@enderecoId", entity.Id);
+            SqlCommand.Parameters.AddWithValue("@Id", entity.Id);
         }
 
         public void Atualizar(Endereco obj)

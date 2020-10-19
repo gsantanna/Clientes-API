@@ -66,12 +66,6 @@ namespace Project.Infra.Repositories
         {
             return Get(id);
         }
-
-        public Cliente GetByCpf(string cpf)
-        {
-            return GetByCpf(cpf);
-        }
-
         public override Cliente MapGetByIdCommandParameters(long id)
         {
             string queryGetById = @"Select * from Cliente 
@@ -133,6 +127,36 @@ namespace Project.Infra.Repositories
             SqlCommand.Parameters.AddWithValue("@cpf", entity.Cpf);
             SqlCommand.Parameters.AddWithValue("@idade", entity.Idade);
             SqlCommand.Parameters.AddWithValue("@datanascimento", entity.DataNascimento);
+        }
+
+        public Cliente GetByCpf(string cpf)
+        {
+            string queryGetById = @"Select * from Cliente 
+                           Where Cpf = @cpf";
+
+            Cliente cliente = null;
+            SqlCommand.CommandType = CommandType.Text;
+            SqlCommand.CommandText = queryGetById;
+            SqlCommand.Parameters.AddWithValue("@cpf", cpf);
+
+            SqlDataReader = SqlCommand.ExecuteReader();
+
+            if (SqlDataReader.HasRows)
+            {
+                while (SqlDataReader.Read())
+                {
+                    cliente = new Cliente(
+                        Convert.ToInt64(SqlDataReader["Id"].ToString()),
+                        SqlDataReader["Nome"].ToString(),
+                        SqlDataReader["Cpf"].ToString(),
+                        Convert.ToInt32(SqlDataReader["Idade"]),
+                        Convert.ToDateTime(SqlDataReader["DataNascimento"])
+                        );
+                }
+            }
+            SqlDataReader.Close();
+
+            return cliente;
         }
     }
 }

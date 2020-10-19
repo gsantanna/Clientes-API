@@ -2,10 +2,9 @@
 using Project.Application.Interfaces;
 using Project.Domain.Entities;
 using Project.Domain.Interfaces;
-using Project.Domain.Interfaces.Services;
 using Project.Domain.Validations;
-using Project.Infra.Context;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Project.Application.Services
@@ -23,11 +22,10 @@ namespace Project.Application.Services
         {
             var endereco = new Endereco
             {
-                Id = Convert.ToInt64(Guid.NewGuid()),
                 Logradouro = command.Logradouro,
                 Bairro = command.Bairro,
                 Cidade = command.Cidade,
-                Estado = command.Estado
+                Estado = command.Estado,
             };
 
             var validation = new EnderecoValidation().Validate(endereco);
@@ -66,6 +64,16 @@ namespace Project.Application.Services
                 throw new Exception("Endereço não encontrado.");
 
             enderecoRepository.Remove(endereco);
+        }
+
+        public IEnumerable<Endereco> GetAll()
+        {
+            return enderecoRepository.GetAll();
+        }
+
+        public Endereco GetById(long id)
+        {
+            return enderecoRepository.GetById(id);
         }
 
         public void Dispose()

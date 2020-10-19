@@ -2,11 +2,7 @@
 using Project.Infra.Context;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 
 namespace Project.Infra.Repositories
 {
@@ -82,6 +78,7 @@ namespace Project.Infra.Repositories
         {
             _unitOfWork.DataContext.Dispose();
             SqlCommand.Dispose();
+            SqlConnection.Close();
         }
     }
 }
