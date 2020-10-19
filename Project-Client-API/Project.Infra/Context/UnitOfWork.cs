@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Data.SqlClient;
 
 namespace Project.Infra.Context
@@ -6,6 +7,7 @@ namespace Project.Infra.Context
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private IDbContext _context;
+        private readonly IConfiguration _configuration;
         public SqlTransaction Transaction { get; private set; }
 
         public void Commit()
@@ -29,7 +31,7 @@ namespace Project.Infra.Context
             }
         }
 
-        public IDbContext DataContext => _context ??= new DbContext();
+        public IDbContext DataContext => _context ??= new DbContext(_configuration);
 
         public SqlTransaction BeginTransaction()
         {

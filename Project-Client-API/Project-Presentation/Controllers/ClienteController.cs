@@ -1,4 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Project.Application.Commands.Cliente;
+using Project.Application.Interfaces;
+using Project.Domain.Entities;
+using Project.Domain.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Project_Presentation.Controllers
 {
@@ -6,34 +13,94 @@ namespace Project_Presentation.Controllers
     [ApiController]
     public class ClienteController : ControllerBase
     {
-        [HttpPost]
-        public IActionResult Post()
+        private readonly IClienteApplicationService clienteApplicationService;
+
+        public ClienteController(IClienteApplicationService clienteApplicationService)
         {
-            return Ok();
+            this.clienteApplicationService = clienteApplicationService;
+        }
+
+        [HttpPost]
+        public IActionResult Post(CreateClienteCommand command)
+        {
+            try
+            {
+                clienteApplicationService.Add(command);
+
+                return Ok(new { Message = "Cliente cadastrado com sucesso" });
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message); ;
+            }
         }
 
         [HttpPut]
-        public IActionResult Put()
+        public IActionResult Put(UpdadeClienteCommand command)
         {
-            return Ok();
+            try
+            {
+                clienteApplicationService.Update(command);
+
+                return Ok(new { Message = "Cliente atualizado com sucesso" });
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message); ;
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok();
+            try
+            {
+                var command = new DeleteClienteCommand { Id = id };
+
+                clienteApplicationService.Remove(command);
+
+                return Ok(new { Message = "Cliente excluido com sucesso." });
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok();
+            try
+            {
+                var result = clienteApplicationService.GetAll();
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                new Exception("Erro ao selecionar o Aluno", e);
+                return this.BadRequest();
+            }
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(long id)
         {
-            return Ok();
+            try
+            {
+                var result = clienteApplicationService.GetById(id);
+
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }

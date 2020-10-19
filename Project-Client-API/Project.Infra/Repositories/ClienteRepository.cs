@@ -1,4 +1,5 @@
 ﻿using Project.Domain.Entities;
+using Project.Domain.Interfaces;
 using Project.Infra.Context;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Project.Infra.Repositories
 {
-    public class ClienteRepository : Repository<Cliente>, IDisposable
+    public class ClienteRepository : Repository<Cliente>, IClienteRepository
     {
         public ClienteRepository(IUnitOfWork unitOfWork) : base(unitOfWork) { }
 
@@ -16,12 +17,15 @@ namespace Project.Infra.Repositories
             Add(cliente);
         }
 
-        public override void MapAddCommandParameters(Cliente entity, SqlCommand sqlCommand)
+        public override void MapAddCommandParameters(Cliente entity)
         {
             string queryAdd = $"insert into cliente (nome, cpf, idade, datanascimento) values(@nome, @cpf, @idade, @datanascimento)";
             SqlCommand.CommandType = CommandType.Text;
             SqlCommand.CommandText = queryAdd;
-            SqlConnection.Open();
+            SqlCommand.Parameters.AddWithValue("@nome", entity.Nome);
+            SqlCommand.Parameters.AddWithValue("@cpf", entity.Cpf);
+            SqlCommand.Parameters.AddWithValue("@idade", entity.Idade);
+            SqlCommand.Parameters.AddWithValue("@datanascimento", entity.DataNascimento);
         }
 
         public IEnumerable<Cliente> Get()
@@ -29,7 +33,7 @@ namespace Project.Infra.Repositories
             return GetAll();
         }
 
-        public override IEnumerable<Cliente> MapGetAllCommandParameters(SqlCommand sqlCommand)
+        public override IEnumerable<Cliente> MapGetAllCommandParameters()
         {
             string queryGetAll = @"Select * from Cliente";
 
@@ -37,7 +41,6 @@ namespace Project.Infra.Repositories
 
             SqlCommand.CommandType = CommandType.Text;
             SqlCommand.CommandText = queryGetAll;
-            SqlConnection.Open();
 
             SqlDataReader = SqlCommand.ExecuteReader();
 
@@ -54,6 +57,8 @@ namespace Project.Infra.Repositories
                         ));
                 }
             }
+            SqlDataReader.Close();
+
             return clientes;
         }
 
@@ -62,7 +67,12 @@ namespace Project.Infra.Repositories
             return Get(id);
         }
 
-        public override Cliente MapGetByIdCommandParameters(SqlCommand sqlCommand, long id)
+        public Cliente GetByCpf(string cpf)
+        {
+            return GetByCpf(cpf);
+        }
+
+        public override Cliente MapGetByIdCommandParameters(long id)
         {
             string queryGetById = @"Select * from Cliente 
                            Where Id = @clienteId";
@@ -87,6 +97,8 @@ namespace Project.Infra.Repositories
                         );
                 }
             }
+            SqlDataReader.Close();
+
             return cliente;
         }
 
@@ -95,13 +107,13 @@ namespace Project.Infra.Repositories
             Remove(obj);
         }
 
-        public override void MapRemoveCommandParameters(Cliente entity, SqlCommand sqlCommand)
+        public override void MapRemoveCommandParameters(Cliente entity)
         {
-            string queryDelete = "delete from cliente where id = @clienteId";
+            string queryDelete = "delete from cliente where id = @id";
 
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = queryDelete;
-            sqlCommand.Parameters.AddWithValue("@clienteId", entity.Id);
+            SqlCommand.CommandType = CommandType.Text;
+            SqlCommand.CommandText = queryDelete;
+            SqlCommand.Parameters.AddWithValue("@id", entity.Id);
         }
 
         public void Atualizar(Cliente obj)
@@ -109,23 +121,18 @@ namespace Project.Infra.Repositories
             Update(obj);
         }
 
-        public override void MapUpdateCommandParameters(Cliente entity, SqlCommand sqlCommand)
+        public override void MapUpdateCommandParameters(Cliente entity)
         {
             string queryUpdate = "update cliente set nome = @nome, cpf = @cpf, idade = @idade, datanascimento = @datanascimento where id = @clienteId";
 
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = queryUpdate;
+            SqlCommand.CommandType = CommandType.Text;
+            SqlCommand.CommandText = queryUpdate;
 
-            sqlCommand.Parameters.AddWithValue("@id", entity.Id);
-            sqlCommand.Parameters.AddWithValue("@nome", entity.Nome);
-            sqlCommand.Parameters.AddWithValue("@cpf", entity.Cpf);
-            sqlCommand.Parameters.AddWithValue("@idade", entity.Idade);
-            sqlCommand.Parameters.AddWithValue("@datanascimento", entity.DataNascimento);
-        }
-
-        public void Dispose()
-        {
-            _unitOfWork.DataContext.Dispose();
+            SqlCommand.Parameters.AddWithValue("@id", entity.Id);
+            SqlCommand.Parameters.AddWithValue("@nome", entity.Nome);
+            SqlCommand.Parameters.AddWithValue("@cpf", entity.Cpf);
+            SqlCommand.Parameters.AddWithValue("@idade", entity.Idade);
+            SqlCommand.Parameters.AddWithValue("@datanascimento", entity.DataNascimento);
         }
     }
 }

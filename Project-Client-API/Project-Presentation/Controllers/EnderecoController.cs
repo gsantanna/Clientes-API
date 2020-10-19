@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Project.Application.Commands.Endereco;
+using Project.Application.Interfaces;
+using Project.Domain.Interfaces;
+using System;
 
 namespace Project_Presentation.Controllers
 {
@@ -6,22 +10,63 @@ namespace Project_Presentation.Controllers
     [ApiController]
     public class EnderecoController : ControllerBase
     {
-        [HttpPost]
-        public IActionResult Post()
+        private readonly IEnderecoApplicationService enderecoApplicationService;
+        private readonly IEnderecoRepository enderecoRepository;
+
+        public EnderecoController(IEnderecoApplicationService enderecoApplicationService, IEnderecoRepository enderecoRepository)
         {
-            return Ok();
+            this.enderecoApplicationService = enderecoApplicationService;
+            this.enderecoRepository = enderecoRepository;
+        }
+
+        [HttpPost]
+        public IActionResult Post(CreateEnderecoCommand command)
+        {
+            try
+            {
+                enderecoApplicationService.Add(command);
+
+                return Ok(new { Message = "Endereço cadastrado com sucesso" });
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message); ;
+            }
         }
 
         [HttpPut]
-        public IActionResult Put()
+        public IActionResult Put(UpdateEnderecoCommand command)
         {
-            return Ok();
+            try
+            {
+                enderecoApplicationService.Update(command);
+
+                return Ok(new { Message = "Endereço atualizado com sucesso" });
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message); ;
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok();
+            try
+            {
+                var command = new DeleteEnderecoCommand { Id = id };
+
+                enderecoApplicationService.Remove(command);
+
+                return Ok(new { Message = "Endereço excluido com sucesso." });
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
         }
 
         [HttpGet]

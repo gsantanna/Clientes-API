@@ -4,11 +4,11 @@ namespace Project.Domain.Entities
 {
     public class Cliente
     {
-        public long Id { get; protected set; }
-        public string Nome { get; protected set; }
-        public string Cpf { get; protected set; }
-        public int Idade { get; protected set; }
-        public DateTime DataNascimento { get; protected set; }
+        public long Id { get; set; }
+        public string Nome { get; set; }
+        public string Cpf { get; set; }
+        public int Idade { get; set; }
+        public DateTime DataNascimento { get; set; }
 
         public Cliente() { }
 

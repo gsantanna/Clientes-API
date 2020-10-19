@@ -29,9 +29,9 @@ namespace Project.Infra.Repositories
         {
             try
             {
-                _unitOfWork.BeginTransaction();
+                SqlCommand.Transaction = _unitOfWork.BeginTransaction();
 
-                MapAddCommandParameters(obj, SqlCommand);
+                MapAddCommandParameters(obj);
                 SqlCommand.ExecuteNonQuery();
 
                 _unitOfWork.Commit();
@@ -44,19 +44,19 @@ namespace Project.Infra.Repositories
 
         public IEnumerable<TEntity> GetAll()
         {
-            return MapGetAllCommandParameters(SqlCommand);
+            return MapGetAllCommandParameters();
         }
 
         public TEntity Get(long id)
         {
-            return MapGetByIdCommandParameters(SqlCommand, id);
+            return MapGetByIdCommandParameters(id);
         }
 
         public void Update(TEntity entity)
         {
-            _unitOfWork.BeginTransaction();
+            SqlCommand.Transaction = _unitOfWork.BeginTransaction();
 
-            MapUpdateCommandParameters(entity, SqlCommand);
+            MapUpdateCommandParameters(entity);
             SqlCommand.ExecuteNonQuery();
 
             _unitOfWork.Commit();
@@ -64,18 +64,24 @@ namespace Project.Infra.Repositories
 
         public void Remove(TEntity entity)
         {
-            _unitOfWork.BeginTransaction();
+            SqlCommand.Transaction = _unitOfWork.BeginTransaction();
 
-            MapRemoveCommandParameters(entity, SqlCommand);
+            MapRemoveCommandParameters(entity);
             SqlCommand.ExecuteNonQuery();
 
             _unitOfWork.Commit();
         }
 
-        public virtual void MapAddCommandParameters(TEntity entity, SqlCommand sqlCommand) { }
-        public virtual void MapUpdateCommandParameters(TEntity entity, SqlCommand sqlCommand) { }
-        public virtual void MapRemoveCommandParameters(TEntity entity, SqlCommand sqlCommand) { }
-        public virtual TEntity MapGetByIdCommandParameters(SqlCommand sqlCommand, long id) { return null; }
-        public virtual IEnumerable<TEntity> MapGetAllCommandParameters(SqlCommand sqlCommand) { return null; }
+        public virtual void MapAddCommandParameters(TEntity entity) { }
+        public virtual void MapUpdateCommandParameters(TEntity entity) { }
+        public virtual void MapRemoveCommandParameters(TEntity entity) { }
+        public virtual TEntity MapGetByIdCommandParameters(long id) { return null; }
+        public virtual IEnumerable<TEntity> MapGetAllCommandParameters() { return null; }
+
+        public void Dispose()
+        {
+            _unitOfWork.DataContext.Dispose();
+            SqlCommand.Dispose();
+        }
     }
 }

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "qT2LX/k+7ZokQvXWZ4iGtDwUwFA957+SEvkSR+rxWGYT202p5jA4/oNI7+VczxqgERhaup/UsMRmv53tUGACMQ==",
+  "dgSpecHash": "IrYtCkqB6ex5OlaFA/zoJh6IwjmIbU0zRHpiRvEvEVZQxFx7KoN5oEtuCYxF8uSM/Msw2K5lBAGZuvg8NNsfRg==",
   "success": true,
   "projectFilePath": "C:\\git\\ClientesAPI\\Project-Client-API\\Project.UnitTest\\Project.UnitTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gustavo\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
     "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\gustavo\\.nuget\\packages\\microsoft.net.test.sdk\\16.5.0\\microsoft.net.test.sdk.16.5.0.nupkg.sha512",
@@ -15,6 +16,7 @@
     "C:\\Users\\gustavo\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
     "C:\\Users\\gustavo\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Users\\gustavo\\.nuget\\packages\\system.collections\\4.0.11\\system.collections.4.0.11.nupkg.sha512",
+    "C:\\Users\\gustavo\\.nuget\\packages\\system.componentmodel.annotations\\4.4.1\\system.componentmodel.annotations.4.4.1.nupkg.sha512",
     "C:\\Users\\gustavo\\.nuget\\packages\\system.diagnostics.debug\\4.0.11\\system.diagnostics.debug.4.0.11.nupkg.sha512",
     "C:\\Users\\gustavo\\.nuget\\packages\\system.diagnostics.tools\\4.0.1\\system.diagnostics.tools.4.0.1.nupkg.sha512",
     "C:\\Users\\gustavo\\.nuget\\packages\\system.dynamic.runtime\\4.0.11\\system.dynamic.runtime.4.0.11.nupkg.sha512",

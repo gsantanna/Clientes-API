@@ -1,4 +1,5 @@
 ﻿using Project.Domain.Entities;
+using Project.Domain.Interfaces;
 using Project.Infra.Context;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Project.Infra.Repositories
 {
-    public class EnderecoRepository : Repository<Endereco>, IDisposable
+    public class EnderecoRepository : Repository<Endereco>, IEnderecoRepository
     {
         public EnderecoRepository(IUnitOfWork unitOfWork) : base(unitOfWork) { }
 
@@ -16,12 +17,15 @@ namespace Project.Infra.Repositories
             Add(endereco);
         }
 
-        public override void MapAddCommandParameters(Endereco entity, SqlCommand sqlCommand)
+        public override void MapAddCommandParameters(Endereco entity)
         {
             string queryAdd = $"insert into Endereco (logradouro, bairro, cidade, estado) values(@logradouro, @bairro, @cidade, @estado)";
             SqlCommand.CommandType = CommandType.Text;
             SqlCommand.CommandText = queryAdd;
-            SqlConnection.Open();
+            SqlCommand.Parameters.AddWithValue("@logradouro", entity.Logradouro);
+            SqlCommand.Parameters.AddWithValue("@bairro", entity.Bairro);
+            SqlCommand.Parameters.AddWithValue("@cidade", entity.Cidade);
+            SqlCommand.Parameters.AddWithValue("@estado", entity.Estado);
         }
 
         public IEnumerable<Endereco> Get()
@@ -29,7 +33,7 @@ namespace Project.Infra.Repositories
             return GetAll();
         }
 
-        public override IEnumerable<Endereco> MapGetAllCommandParameters(SqlCommand sqlCommand)
+        public override IEnumerable<Endereco> MapGetAllCommandParameters()
         {
             string queryGetAll = @"Select * from Endereco";
 
@@ -54,6 +58,9 @@ namespace Project.Infra.Repositories
                         ));
                 }
             }
+
+            SqlDataReader.Close();
+
             return enderecos;
         }
 
@@ -62,7 +69,7 @@ namespace Project.Infra.Repositories
             return Get(id);
         }
 
-        public override Endereco MapGetByIdCommandParameters(SqlCommand sqlCommand, long id)
+        public override Endereco MapGetByIdCommandParameters(long id)
         {
             string queryGetById = @"Select * from Endereco 
                            Where Id = @enderecoId";
@@ -87,6 +94,8 @@ namespace Project.Infra.Repositories
                         );
                 }
             }
+            SqlDataReader.Close();
+
             return endereco;
         }
 
@@ -95,13 +104,13 @@ namespace Project.Infra.Repositories
             Remove(obj);
         }
 
-        public override void MapRemoveCommandParameters(Endereco entity, SqlCommand sqlCommand)
+        public override void MapRemoveCommandParameters(Endereco entity)
         {
             string queryDelete = "delete from Endereco where id = @enderecoId";
 
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = queryDelete;
-            sqlCommand.Parameters.AddWithValue("@enderecoId", entity.Id);
+            SqlCommand.CommandType = CommandType.Text;
+            SqlCommand.CommandText = queryDelete;
+            SqlCommand.Parameters.AddWithValue("@enderecoId", entity.Id);
         }
 
         public void Atualizar(Endereco obj)
@@ -109,23 +118,18 @@ namespace Project.Infra.Repositories
             Update(obj);
         }
 
-        public override void MapUpdateCommandParameters(Endereco entity, SqlCommand sqlCommand)
+        public override void MapUpdateCommandParameters(Endereco entity)
         {
             string queryUpdate = "update Endereco set logradouro = @logradouro, bairro = @bairro, cidade = @cidade, estado = @estado where id = @enderecoId";
 
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.CommandText = queryUpdate;
+            SqlCommand.CommandType = CommandType.Text;
+            SqlCommand.CommandText = queryUpdate;
 
-            sqlCommand.Parameters.AddWithValue("@id", entity.Id);
-            sqlCommand.Parameters.AddWithValue("@logradouro", entity.Logradouro);
-            sqlCommand.Parameters.AddWithValue("@bairro", entity.Bairro);
-            sqlCommand.Parameters.AddWithValue("@cidade", entity.Cidade);
-            sqlCommand.Parameters.AddWithValue("@estado", entity.Estado);
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            SqlCommand.Parameters.AddWithValue("@id", entity.Id);
+            SqlCommand.Parameters.AddWithValue("@logradouro", entity.Logradouro);
+            SqlCommand.Parameters.AddWithValue("@bairro", entity.Bairro);
+            SqlCommand.Parameters.AddWithValue("@cidade", entity.Cidade);
+            SqlCommand.Parameters.AddWithValue("@estado", entity.Estado);
         }
     }
 }

@@ -7,9 +7,6 @@ namespace Project.Domain.Validations
     {
         public EnderecoValidation()
         {
-            RuleFor(a => a.Id)
-                .NotEmpty().WithMessage("Id do cliente obrigatório.");
-
             RuleFor(a => a.Logradouro)
                 .NotEmpty().WithMessage("Logradouro do cliente obrigatório.")
                 .Length(1, 50).WithMessage("Nome de ter de 1 a 50 caracteres.");

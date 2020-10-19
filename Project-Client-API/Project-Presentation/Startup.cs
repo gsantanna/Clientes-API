@@ -9,6 +9,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Project.Application.Interfaces;
+using Project.Application.Services;
+using Project.CrossCutting.IoC;
+using Project.Domain.Entities;
+using Project.Domain.Interfaces;
+using Project.Domain.Interfaces.Services;
+using Project.Domain.Services;
+using Project.Infra.Context;
+using Project.Infra.Repositories;
 using Project_Presentation.Configurations;
 
 namespace Project_Presentation
@@ -28,6 +37,8 @@ namespace Project_Presentation
             services.AddControllers();
 
             SwaggerSetup.AddSwaggerSetup(services);
+
+            DependencyInjection.Register(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

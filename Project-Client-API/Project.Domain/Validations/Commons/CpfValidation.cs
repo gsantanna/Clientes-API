@@ -31,7 +31,7 @@
 
             string digito = resto.ToString();
 
-            tempCpf = tempCpf + digito;
+            tempCpf += digito;
 
             soma = 0;
             for (int i = 0; i < 10; i++)
@@ -44,7 +44,7 @@
             else
                 resto = 11 - resto;
 
-            digito = digito + resto.ToString();
+            digito += resto.ToString();
 
             return cpf.EndsWith(digito);
         }

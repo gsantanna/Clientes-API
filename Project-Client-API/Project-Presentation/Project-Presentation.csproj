@@ -9,5 +9,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Application\Project.Application.csproj" />
+    <ProjectReference Include="..\Project.CrossCutting.IoC\Project.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\Project.Domain\Project.Domain.csproj" />
+    <ProjectReference Include="..\Project.Infra\Project.Infra.csproj" />
+  </ItemGroup>
+
 
 </Project>

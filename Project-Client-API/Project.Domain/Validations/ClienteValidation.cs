@@ -8,9 +8,6 @@ namespace Project.Domain.Validations
     {
         public ClienteValidation()
         {
-            RuleFor(a => a.Id)
-                .NotEmpty().WithMessage("Id do cliente obrigatório.");
-
             RuleFor(a => a.Nome)
                 .NotEmpty().WithMessage("Nome do cliente obrigatório.")
                 .Length(1, 30).WithMessage("Nome de ter de 1 a 30 caracteres.");
