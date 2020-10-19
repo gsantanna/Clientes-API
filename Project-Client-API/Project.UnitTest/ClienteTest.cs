@@ -96,7 +96,7 @@ namespace Project.UnitTest
 
             var command = new UpdadeClienteCommand
             {
-                Id = 1003,
+                Id = 1004,
                 Nome = "Gustavo C. Santanna",
                 Cpf = "00425718719",
                 Idade = 46,
@@ -126,7 +126,7 @@ namespace Project.UnitTest
         {
             #region Arrange
 
-            var id = 1003;
+            var id = 1002;
             var resource = $"api/Cliente/{id}";
 
             #endregion
